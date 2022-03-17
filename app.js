@@ -9,16 +9,22 @@ let hue = 0;
 let frame = 0;
 let score = 0;
 let speed = 2;
+let temp = canvas.height - 100;
 
 const animate = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillRect(10, 10, 20, 20);
+  // ctx.fillRect(10, temp, 20, 20);
+  bird.update();
+  bird.draw();
   requestAnimationFrame(animate);
+  angle += 0.12;
 };
 animate();
 
 window.addEventListener("keydown", (e) => {
   if (e.code === "Space") spacePressed = true;
+  temp++;
+  console.log(temp);
 });
 window.addEventListener("keyup", (e) => {
   if (e.code === "Space") spacePressed = false;
